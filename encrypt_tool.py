@@ -54,7 +54,7 @@ def menu():
         encrypt_folder(folder_path)
     elif choice == '3':
         image_path = input("Enter the image file to encrypt: ")
-        encrypt_image(image_path)
+        encrypt_file(image_path, os.path.dirname(image_path))
     elif choice == '4':
         print("Exiting easeCrypt...")
         return False  # Exit the loop

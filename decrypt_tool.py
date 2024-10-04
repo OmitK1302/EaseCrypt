@@ -17,8 +17,8 @@ def decrypt_file(file_name, output_folder):
             encrypted_data = encrypted_file.read()
 
         decrypted_data = fernet.decrypt(encrypted_data)
-        original_file_name = os.path.join(output_folder, os.path.basename(file_name).replace('.txt.encrypted', '_decrypted.txt'))
-        original_file_name = os.path.join(output_folder, os.path.basename(file_name).replace('.png.encrypted', '_decrypted.png'))
+        original_file_name = os.path.join(output_folder, os.path.basename(file_name).replace('.encrypted', ''))
+        #original_file_name = os.path.join(output_folder, os.path.basename(file_name).replace('.png.encrypted', '_decrypted.png'))
 
         with open(original_file_name, 'wb') as decrypted_file:
             decrypted_file.write(decrypted_data)
@@ -59,7 +59,7 @@ def menu():
         decrypt_folder(folder_path)
     elif choice == '3':
         image_path = input("Enter the encrypted image file to decrypt: ")
-        decrypt_image(image_path)
+        decrypt_file(image_path, os.path.dirname(image_path))
     elif choice == '4':
         print("Exiting easeCrypt...")
         return False  # Exit the loop
